@@ -5,7 +5,10 @@
 }
 
 body {
-  background: goldenrod;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(45deg, black, teal, purple, beige) center no-repeat;
+  background-size: cover;
   font-size: 22px;
 }
 
@@ -46,7 +49,8 @@ body {
 
 .menu-link,
 .menu-section__link {
-  display: block;
+  display: flex;
+  justify-content: space-between;
 
   padding: 8px 25px;
   border-top-right-radius: 6px;
@@ -75,5 +79,4 @@ body {
 .menu-section__link:hover {
   color: beige;
   background: blueviolet;
-  text-decoration: underline;
 }

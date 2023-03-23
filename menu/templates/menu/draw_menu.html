@@ -1,11 +1,20 @@
 <section class="section">
   <ul class="menu{% if active_menu %} expand{% else %}{% endif %}">
-    <a class="menu-link{% if active_menu %} active{% else %}{% endif %}" href="{% url 'menu' menu.slug %}" class="menu-title">{{ menu.name }}</a>
+    <a class="menu-link{% if active_menu %} active{% else %}{% endif %}" href="{% url 'menu' menu.slug %}" class="menu-title">
+      {{ menu.name }}
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
 
     {% for item in menu_items.values %}
       <ul class="menu-section{% if item.item.counter <= active_item %} expand{% else %}{%endif %}">
         
-          <a class="menu-section__link{% if item.item.is_active %} active{% else %}{% endif %}" href="{{ item.item.get_absolute_url }}">{{ item.item.name }}</a>
+          <a class="menu-section__link{% if item.item.is_active %} active{% else %}{% endif %}" href="{{ item.item.get_absolute_url }}">
+            {{ item.item.name }}
+            {% if item.childs %}
+              <i class="fa-solid fa-chevron-down"></i>
+            {% endif %}
+          </a>
+
           {% if item.childs %}
             {% include 'menu/draw_submenu.html' with menu_items=item.childs %}
           {% endif %}
